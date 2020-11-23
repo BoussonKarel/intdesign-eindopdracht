@@ -30,6 +30,15 @@
     --color-neutral-xx-dark: #414147;
     --color-neutral-xxx-dark: #262629;
 
+    /* Whitespace */
+    --global-baseline: 8px;
+    --global-whitespace-xxs: var(--global-baseline); /* 8 */
+    --global-whitespace-xs: calc(var(--global-baseline) * 2); /* 16 */
+    --global-whitespace-sm: calc(var(--global-baseline) * 3); /* 24 */
+    --global-whitespace-md: calc(var(--global-baseline) * 4); /* 32 */
+    --global-whitespace-lg: calc(var(--global-baseline) * 5); /* 40 */
+    --global-whitespace-xl: calc(var(--global-baseline) * 6); /* 48 */
+
     /* transitions */
     --transition-alpha: .1s;
 }
@@ -47,12 +56,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: Helvetica, arial, sans-serif;
-    color: var(--color-neutral-dark);
+    font-family: "Open Sans", Helvetica, arial, sans-serif;
+    color: var(--color-neutral-xx-light);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background: linear-gradient(to bottom right, var(--color-beta-dark), var(--color-alpha-dark));
 }
 
 *,
@@ -301,10 +310,95 @@ input::placeholder {
 \*------------------------------------*/
 
 /*
+    Component: app
+    ---
+    Main app styling
+*/
+
+.c-app {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 24.5em; /* 24.5 * 16px = 392 */
+    width: 100%;
+}
+
+/*
     Component: Logo
     ---
     Website main logo
 */
+
+.c-logo {
+    fill: none;
+    stroke: var(--color-neutral-xx-light);
+    width: 128px;
+    height: 128px;
+    display: block;
+    margin: var(--global-whitespace-md) auto;
+}
+
+/* 
+    Component: Time / Countdown
+    ---
+    Styling for countdown timer and date
+*/
+
+.c-time {
+    text-align: center;
+    margin-bottom: var(--global-whitespace-lg);
+}
+
+.c-time__text {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: var(--global-whitespace-xs);
+}
+
+.c-time__countdown {
+    margin-bottom: var(--global-whitespace-xs);
+}
+
+.c-countdown__timer {
+    font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 29px;
+    font-weight: 500;
+}
+
+/*
+    Component: Info
+    ---
+    Styling for info about the launch
+*/
+
+.c-info__header {
+    background-color: var(--color-neutral-xx-light);
+    color: var(--color-alpha-x-dark);
+    fill: var(--color-alpha-x-dark);
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.c-info__header h1,
+.c-info__header h2,
+.c-info__details h3 {
+    font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.c-info__header h1 {
+
+}
+
+.c-info__header h2 {
+    
+}
+
+.c-info__details h3 {
+    
+}
 
 /*------------------------------------*\
 #UTILITIES
