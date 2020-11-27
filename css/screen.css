@@ -62,6 +62,8 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(to bottom right, var(--color-beta-dark), var(--color-alpha-dark));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 *,
@@ -117,21 +119,27 @@ h3 {
 }
 
 h1 {
-    font-size: 36px;
-    line-height: 48px;
+    font-size: 29px;
+    line-height: 43.5px;
     margin: 0 0 24px;
 }
 
 h2 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 23px;
+    line-height: 34.5px;
     margin: 0 0 24px;
 }
 
 h3 {
-    font-size: 26px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
     margin: 0 0 24px;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 27px;
 }
 
 h4,
@@ -358,10 +366,30 @@ input::placeholder {
     margin-bottom: var(--global-whitespace-xs);
 }
 
+.c-countdown {
+    display: inline-block;
+}
+
 .c-countdown__timer {
     font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 29px;
     font-weight: 500;
+}
+
+.c-countdown__bar {
+    content: "";
+    height: 4px;
+    background-color: var(--color-alpha-light);
+    position: relative;
+}
+
+.c-countdown__bar::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 60%;
+    background-color: var(--color-neutral-xx-light);
+    left: 0;
 }
 
 /*
@@ -381,23 +409,31 @@ input::placeholder {
     justify-content: space-between;
 }
 
-.c-info__header h1,
 .c-info__header h2,
-.c-info__details h3 {
+.c-info__header h3,
+.c-info__details h4 {
     font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
     margin: 0;
 }
 
-.c-info__header h1 {
-
+.c-info__expand {
+    cursor: pointer;
+    transition: transform 1s;
 }
 
-.c-info__header h2 {
-    
+.is-expanded .c-info__expand {
+    transform: rotate(-180deg);
 }
 
-.c-info__details h3 {
-    
+.c-info__details {
+    margin-top: 16px;
+    max-height: 0;
+    transition: max-height 2s;
+    overflow: hidden;
+}
+
+.is-expanded .c-info__details {
+    max-height: 500px;
 }
 
 /*------------------------------------*\
