@@ -428,7 +428,7 @@ input::placeholder {
 .c-info__details {
     margin-top: 16px;
     max-height: 0;
-    transition: max-height 2s;
+    transition: max-height 1s;
     overflow: hidden;
 }
 
