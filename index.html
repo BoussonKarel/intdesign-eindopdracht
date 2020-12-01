@@ -27,7 +27,7 @@
     <body>
         <div class="c-landing">
             <div class="c-landing__intro c-intro">
-                <svg class="c-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+                <svg class="c-intro__logo c-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
                     <defs>
                         <clipPath id="clip-path">
                             <rect id="Rectangle_26" data-name="Rectangle 26" width="128" height="128" fill="none" stroke="#f3f2f8" stroke-width="3"/>
@@ -51,24 +51,26 @@
                 <img src="./img/mockup.png" alt="Mock-up of the GenerationSpace app" />
             </figure>
             <div class="c-landing__form">
-                <form class="c-form">
+                <form class="c-form" action="#">
                     <h3>Get notified about updates</h3>
-                    <p class="c-form-field js-form-field">
+                    <p class="c-form__item c-form-field js-name-field">
                         <label class="c-label js-label" for="name">
                             Name
                         </label>
-                        <input class="c-input js-input" type="text" name="name" id="name" />
+                        <input class="c-input js-input" type="text" name="name" id="name" required />
+                        <span class="c-error js-error"></span>
                     </p>
 
-                    <p class="c-form-field js-form-field">
+                    <p class="c-form__item c-form-field js-email-field">
                         <label class="c-label js-label" for="email">
                             Email
                         </label>
-                        <input class="c-input js-input" type="email" name="email" id="email" />
+                        <input class="c-input js-input" type="email" name="email" id="email" required />
+                        <span class="c-error js-error"></span>
                     </p>
 
-                    <p class="c-form-field">
-                        <button class="o-button-reset c-button js-button">Stay in touch</button>
+                    <p class="c-form__item c-form-field">
+                        <button class="o-button-reset c-button js-sign-up">Stay in touch</button>
                     </p>
                 </form>
             </div>

@@ -26,6 +26,10 @@
     --global-color-beta-dark: #6201AF;
     --global-color-beta-x-dark: #470180;
 
+    --global-color-error: #F25B65;
+    --global-color-error-light: #FEAAB0;
+
+
     --global-color-neutral-xx-light: #F3F2F8;
     --global-color-neutral-x-light: #E8E7EF; 
     --global-color-neutral-light: #D0CFE1;
@@ -498,8 +502,7 @@ input::placeholder {
     Styling for title of the app and it's intro
 */
 
-.c-intro .c-logo {
-    display: none;
+.c-intro__logo {
     margin-top: 0;
 }
 
@@ -510,6 +513,12 @@ input::placeholder {
 .c-intro h1 {
     font-family: var(--font-orbitron);
     margin-bottom: var(--global-whitespace-lg);
+}
+
+@media (min-width: 768px) {
+    .c-intro__logo {
+        display: none;
+    }
 }
 
 
@@ -527,12 +536,22 @@ input::placeholder {
     column-gap: var(--global-whitespace-xs);
 }
 
+.c-form__item {
+    grid-column: span 3;
+}
+
 
 .c-form h3 {
     grid-column: span 3;
     text-align: center;
     font-weight: 600;
     margin-bottom: var(--global-whitespace-lg);
+}
+
+@media (min-width: 768px) {
+    .c-form__item {
+        grid-column: span 1;
+    }
 }
 
 /*
@@ -548,11 +567,11 @@ input::placeholder {
 
     width: 100%;
     background: transparent;
-    border: 1px solid var(--global-color-neutral-light);
+    border: 1px solid var(--input-border-color, var(--global-color-neutral-light));
     border-radius: 8px;
     font-family: inherit;
     font-size: 16px;
-    color: var(--global-color-neutral-xx-light);
+    color: var(--input-color, var(--global-color-neutral-xx-light));
     
     line-height: calc(var(--global-baseline) * 3);
     padding: 11px 16px;
@@ -563,7 +582,7 @@ input::placeholder {
 .c-input:hover,
 .c-input:focus,
 .c-input:active {
-    border-color: var(--global-color-neutral-xx-light);
+    border-color: var(--input-border-color, var(--global-color-neutral-xx-light));;
 }
 
 .c-input:focus,
@@ -572,23 +591,26 @@ input::placeholder {
 }
 
 /*
-    Component: Label
+    Component: Label & error
     ---
     Class to put on all form labels
 */
 
-.c-label {
+.c-label,
+.c-error {
     margin-bottom: 0;
     font-size: 14px;   
     line-height: 21px;
-    color: var(--global-color-neutral-xx-light);
+    color: var(--input-color);
 }
 
 /*
-    Component: Floating label
+    Component: Form field
     ---
-    Class to style the form layout
+    Class to style form field: floating label, error
 */
+
+/* Floating label */
 
 .c-form-field {
     position: relative;
@@ -609,7 +631,12 @@ input::placeholder {
     transform: translateY(-36px);
 }
 
+/* Error */
 
+.has-error {
+    --input-border-color: var(--global-color-error);
+    --input-color: var(--global-color-error-light);
+}
 
 /*
     Component: Button
