@@ -8,27 +8,27 @@
 
 :root {
     /* colors */
-    --color-alpha-xx-light: #D7D4FE;
-    --color-alpha-x-light: #A59EFC;
-    --color-alpha-light: #695EE6;
-    --color-alpha: #3326CB;
-    --color-alpha-dark: #0C0095;
-    --color-alpha-x-dark: #080066;
+    --global-color-alpha-xx-light: #D7D4FE;
+    --global-color-alpha-x-light: #A59EFC;
+    --global-color-alpha-light: #695EE6;
+    --global-color-alpha: #3326CB;
+    --global-color-alpha-dark: #0C0095;
+    --global-color-alpha-x-dark: #080066;
 
-    --color-beta-x-light: #D9AAFE;
-    --color-beta-light: #AF5BF2;
-    --color-beta: #9128E4;
-    --color-beta-dark: #6201AF;
-    --color-beta-x-dark: #470180;
+    --global-color-beta-x-light: #D9AAFE;
+    --global-color-beta-light: #AF5BF2;
+    --global-color-beta: #9128E4;
+    --global-color-beta-dark: #6201AF;
+    --global-color-beta-x-dark: #470180;
 
-    --color-neutral-xx-light: #F3F2F8;
-    --color-neutral-x-light: #E8E7EF; 
-    --color-neutral-light: #D0CFE1;
-    --color-neutral: #B5B3CB;
-    --color-neutral-dark: #888799;
-    --color-neutral-x-dark: #5B5A66;
-    --color-neutral-xx-dark: #414147;
-    --color-neutral-xxx-dark: #262629;
+    --global-color-neutral-xx-light: #F3F2F8;
+    --global-color-neutral-x-light: #E8E7EF; 
+    --global-color-neutral-light: #D0CFE1;
+    --global-color-neutral: #B5B3CB;
+    --global-color-neutral-dark: #888799;
+    --global-color-neutral-x-dark: #5B5A66;
+    --global-color-neutral-xx-dark: #414147;
+    --global-color-neutral-xxx-dark: #262629;
 
     /* Whitespace */
     --global-baseline: 8px;
@@ -40,7 +40,9 @@
     --global-whitespace-xl: calc(var(--global-baseline) * 6); /* 48 */
 
     /* transitions */
-    --transition-alpha: .1s;
+    --global-transition-alpha: .1s;
+
+    --global-font-space: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 /*------------------------------------*\
@@ -57,11 +59,11 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: "Open Sans", Helvetica, arial, sans-serif;
-    color: var(--color-neutral-xx-light);
+    color: var(--global-color-neutral-xx-light);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(to bottom right, var(--color-beta-dark), var(--color-alpha-dark));
+    background: linear-gradient(to bottom right, var(--global-color-beta-dark), var(--global-color-alpha-dark));
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -80,13 +82,13 @@ html {
 */
 
 ::-moz-selection {
-    background: var(--color-alpha);
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: var(--color-alpha);
+    background: var(--global-color-alpha);
     color: white;
     text-shadow: none;
 }
@@ -198,21 +200,21 @@ hr {
 }
 
 a {
-    transition: all var(--transition-alpha);
-    color: var(--color-alpha);
-    outline-color: var(--color-alpha);
+    transition: all var(--global-transition-alpha);
+    color: var(--global-color-alpha);
+    outline-color: var(--global-color-alpha);
     outline-width: medium;
     outline-offset: 2px;
 }
 
 a:visited,
 a:active {
-    color: var(--color-alpha);
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: var(--color-alpha-light);
+    color: var(--global-color-alpha-light);
 }
 
 label,
@@ -225,7 +227,7 @@ select {
 }
 
 input::placeholder {
-    color: var(--color-neutral-light);
+    color: var(--global-color-neutral-light);
 }
 
 /*------------------------------------*\
@@ -338,7 +340,7 @@ input::placeholder {
 
 .c-logo {
     fill: none;
-    stroke: var(--color-neutral-xx-light);
+    stroke: var(--global-color-neutral-xx-light);
     width: 128px;
     height: 128px;
     display: block;
@@ -371,7 +373,7 @@ input::placeholder {
 }
 
 .c-countdown__timer {
-    font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: var(--font-orbitron);
     font-size: 29px;
     font-weight: 500;
 }
@@ -379,7 +381,7 @@ input::placeholder {
 .c-countdown__bar {
     content: "";
     height: 4px;
-    background-color: var(--color-alpha-light);
+    background-color: var(--global-color-alpha-light);
     position: relative;
 }
 
@@ -388,7 +390,7 @@ input::placeholder {
     position: absolute;
     height: 4px;
     width: 60%;
-    background-color: var(--color-neutral-xx-light);
+    background-color: var(--global-color-neutral-xx-light);
     left: 0;
 }
 
@@ -399,9 +401,9 @@ input::placeholder {
 */
 
 .c-info__header {
-    background-color: var(--color-neutral-xx-light);
-    color: var(--color-alpha-x-dark);
-    fill: var(--color-alpha-x-dark);
+    background-color: var(--global-color-neutral-xx-light);
+    color: var(--global-color-alpha-x-dark);
+    fill: var(--global-color-alpha-x-dark);
     padding: 16px 24px;
     border-radius: 8px;
     display: flex;
@@ -412,7 +414,7 @@ input::placeholder {
 .c-info__header h2,
 .c-info__header h3,
 .c-info__details h4 {
-    font-family: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: var(--font-orbitron);
     margin: 0;
 }
 
@@ -436,6 +438,177 @@ input::placeholder {
     max-height: 500px;
 }
 
+/*
+    Component: Landing page layout
+    ---
+    Styling for the landing page with CSS Grids
+*/
+
+.c-landing {
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    row-gap: 80px;
+}
+
+.c-landing__intro,
+.c-landing__mockup {
+    align-self: center;
+}
+
+.c-landing__intro {
+    text-align: center;
+}
+
+.c-landing__mockup {
+    padding: 0 25%;
+}
+
+.c-landing__intro,
+.c-landing__form {
+    grid-column: span 12;
+}
+
+.c-landing__mockup {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .c-landing__mockup {
+        display: block;
+    }
+
+    .c-landing__intro,
+    .c-landing__mockup {
+        grid-column: span 6;
+    }
+}
+
+/*
+    Component: Intro
+    ---
+    Styling for title of the app and it's intro
+*/
+
+.c-intro .c-logo {
+    margin-top: 0;
+}
+
+.c-intro p {
+    margin-bottom: 0;
+}
+
+.c-intro h1 {
+    font-family: var(--font-orbitron);
+    margin-bottom: var(--global-whitespace-lg);
+}
+
+
+/*
+    Component: Form
+    ---
+    Class to style the form layout
+*/
+
+.c-form {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.c-form h3 {
+    grid-column: span 3;
+    text-align: center;
+    font-weight: 600;
+}
+
+/*
+    Component: Input
+    ---
+    Class to put on all input="text" like form inputs
+*/
+
+.c-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--global-color-neutral-light);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--global-color-neutral-xx-light);
+    
+    line-height: calc(var(--global-baseline) * 3);
+    padding: 16px 11px;
+    outline: none;
+    transition: border var(--global-transition-alpha);
+}
+
+.c-input:hover,
+.c-input:focus,
+.c-input:active {
+    border-color: var(--global-color-neutral-xx-light);
+}
+
+.c-input:focus,
+.c-input:active {
+    box-shadow: 0 0 0 3px var(--global-color-alpha);
+}
+
+/*
+    Component: Label
+    ---
+    Class to put on all form labels
+*/
+
+.c-label {
+    margin-bottom: 0;
+    font-size: 14px;   
+    line-height: 21px;
+    color: var(--global-color-neutral-xx-light);
+}
+
+/*
+    Component: Button
+    ---
+    Class to put on form buttons or
+*/
+
+.c-button {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    background-color: var(--global-color-alpha-light);
+    padding: 16px 11px;
+    color: #fff;
+
+    line-height: calc(var(--global-baseline) * 3);
+    width: 100%;
+    outline: none;
+    transition: all var(--global-transition-alpha);
+}
+
+.c-button:hover {
+    background-color: var(--global-color-alpha-light);
+}
+
+.c-button:focus {
+    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+}
+
+.c-button:active {
+    background-color: var(--global-color-alpha-dark);
+    box-shadow: none;
+}
+
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -447,11 +620,11 @@ input::placeholder {
 */
 
 .u-color-neutral {
-    color: var(--color-neutral);
+    color: var(--global-color-neutral);
 }
 
 .u-color-neutral-dark {
-    color: var(--color-neutral-dark);
+    color: var(--global-color-neutral-dark);
 }
 
 /*
