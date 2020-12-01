@@ -91,13 +91,13 @@ html {
 */
 
 ::-moz-selection {
-    background: var(--global-color-alpha);
+    background: var(--global-color-beta);
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: var(--global-color-alpha);
+    background: var(--global-color-beta);
     color: white;
     text-shadow: none;
 }
@@ -387,20 +387,22 @@ input::placeholder {
     font-weight: 500;
 }
 
-.c-countdown__bar {
+.c-progress {
     content: "";
     height: 4px;
+    width: 100%;
     background-color: var(--global-color-alpha-light);
     position: relative;
 }
 
-.c-countdown__bar::after {
+.c-progress__bar {
     content: "";
     position: absolute;
+    width: 0%;
     height: 4px;
-    width: 60%;
     background-color: var(--global-color-neutral-xx-light);
     left: 0;
+    transition: width 1s;
 }
 
 /*
