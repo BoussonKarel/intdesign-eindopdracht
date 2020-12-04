@@ -40,7 +40,7 @@
     --global-color-neutral-xxx-dark: #262629;
 
     /* Whitespace */
-    --global-baseline: 8px;
+    --global-baseline: 0.5rem;
     --global-whitespace-xxs: var(--global-baseline); /* 8 */
     --global-whitespace-xs: calc(var(--global-baseline) * 2); /* 16 */
     --global-whitespace-sm: calc(var(--global-baseline) * 3); /* 24 */
@@ -49,7 +49,10 @@
     --global-whitespace-xl: calc(var(--global-baseline) * 6); /* 48 */
 
     /* transitions */
-    --global-transition-alpha: .1s;
+    --global-transition-alpha: .2s;
+    --global-transition-beta: 1s;
+
+    --global-font-size: 16;
 
     --global-font-space: "Orbitron", "Open Sans", Arial, Helvetica, sans-serif;
 }
@@ -65,8 +68,8 @@
 */
 
 html {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: calc(var(--global-font-size) / 16 * 100%); /* 16 px */
+    line-height: 1.5rem;
     font-family: "Open Sans", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xx-light);
     box-sizing: border-box;
@@ -130,35 +133,35 @@ h3 {
 }
 
 h1 {
-    font-size: 29px;
-    line-height: 43.5px;
+    font-size: calc(29rem / var(--global-font-size));
+    line-height: calc(43.5rem / var(--global-font-size));
     margin: 0 0 24px;
 }
 
 h2 {
-    font-size: 23px;
-    line-height: 34.5px;
+    font-size: calc(23rem / var(--global-font-size));
+    line-height: calc(34.5rem / var(--global-font-size));
     margin: 0 0 24px;
 }
 
 h3 {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: calc(20rem / var(--global-font-size));
+    line-height: calc(30rem / var(--global-font-size));
     font-weight: 400;
     margin: 0 0 24px;
 }
 
 h4 {
-    font-size: 18px;
-    line-height: 27px;
+    font-size: calc(18rem / var(--global-font-size));
+    line-height: calc(27rem / var(--global-font-size));
 }
 
 h4,
 h5,
 h6 {
-    font-size: 16px;
+    font-size: calc(16rem / var(--global-font-size));
     font-weight: 600;
-    line-height: 24px;
+    line-height: calc(24rem / var(--global-font-size));
     margin: 0 0 24px;
 }
 
@@ -184,8 +187,8 @@ li ol {
 
 blockquote {
     font-style: normal;
-    font-size: 23px;
-    line-height: 32px;
+    font-size: calc(23rem / var(--global-font-size));
+    line-height: calc(32rem / var(--global-font-size));
     margin: 0 0 24px;
 }
 
@@ -196,8 +199,8 @@ blockquote * {
 
 figcaption {
     font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: calc(12rem / var(--global-font-size));
+    line-height: calc(16rem / var(--global-font-size));
     margin-top: 8px;
 }
 
@@ -368,7 +371,6 @@ input::placeholder {
 }
 
 .c-time__text {
-    font-size: 16px;
     font-weight: 600;
     margin-bottom: var(--global-whitespace-xs);
 }
@@ -383,7 +385,8 @@ input::placeholder {
 
 .c-countdown__timer {
     font-family: var(--font-orbitron);
-    font-size: 29px;
+    font-size: calc(29rem / var(--global-font-size));
+    line-height: calc(44.5rem / var(--global-font-size));
     font-weight: 500;
 }
 
@@ -402,7 +405,7 @@ input::placeholder {
     height: 4px;
     background-color: var(--global-color-neutral-xx-light);
     left: 0;
-    transition: width 1s;
+    transition: width var(--global-transition-beta);
 }
 
 /*
@@ -411,15 +414,20 @@ input::placeholder {
     Styling for info about the launch
 */
 
-.c-info__header {
+.c-info {
     background-color: var(--global-color-neutral-xx-light);
     color: var(--global-color-alpha-x-dark);
-    fill: var(--global-color-alpha-x-dark);
-    padding: 16px 24px;
+    padding: var(--global-whitespace-xs) var(--global-whitespace-sm);
+    padding-bottom: 0;
     border-radius: 8px;
+}
+
+.c-info__header {
+    fill: var(--global-color-alpha-x-dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: var(--global-whitespace-xs);
 }
 
 .c-info__header h2,
@@ -431,7 +439,7 @@ input::placeholder {
 
 .c-info__expand {
     cursor: pointer;
-    transition: transform 1s;
+    transition: transform var(--global-transition-beta);
 }
 
 .is-expanded .c-info__expand {
@@ -439,14 +447,16 @@ input::placeholder {
 }
 
 .c-info__details {
-    margin-top: 16px;
-    max-height: 0;
-    transition: max-height 1s;
+    transition: height var(--global-transition-beta);
     overflow: hidden;
 }
 
-.is-expanded .c-info__details {
-    max-height: 500px;
+.c-info__details h4 {
+    padding-top: var(--global-whitespace-xs);
+}
+
+.c-info__details p {
+    margin: 0;
 }
 
 /*
@@ -566,19 +576,16 @@ input::placeholder {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
     width: 100%;
     background: transparent;
     border: 1px solid var(--input-border-color, var(--global-color-neutral-light));
     border-radius: 8px;
     font-family: inherit;
-    font-size: 16px;
+    font-size: calc(16rem / var(--global-font-size));
+    line-height: calc(24rem / var(--global-font-size));
     color: var(--input-color, var(--global-color-neutral-xx-light));
-    
-    line-height: calc(var(--global-baseline) * 3);
     padding: 11px 16px;
     outline: none;
-    transition: border var(--global-transition-alpha);
 }
 
 .c-input:hover,
@@ -601,8 +608,8 @@ input::placeholder {
 .c-label,
 .c-error {
     margin-bottom: 0;
-    font-size: 14px;   
-    line-height: 21px;
+    font-size: calc(14rem / var(--global-font-size));   
+    line-height: calc(21rem / var(--global-font-size));
     color: var(--input-color);
 }
 
@@ -625,7 +632,7 @@ input::placeholder {
     padding: 4px 16px;
     will-change: transform;
     transform: translateY( 0 );
-    transition: transform 200ms ease-in-out;
+    transition: transform --var(--global-transition-alpha) ease-in-out;
 }
 
 .c-form-field:focus-within .c-label,
@@ -647,15 +654,14 @@ input::placeholder {
 */
 
 .c-button {
+    font-size: calc(16rem / var(--global-font-size));
+    line-height: calc(24rem / var(--global-font-size));
     cursor: pointer;
-    font-size: 16px;
     font-weight: 700;
     border-radius: 8px;
     background-color: var(--global-color-alpha-light);
     padding: 11px 16px;
     color: #fff;
-
-    line-height: calc(var(--global-baseline) * 3);
     width: 100%;
     outline: none;
     transition: all var(--global-transition-alpha);
@@ -773,7 +779,8 @@ input::placeholder {
 */
 
 .u-text-sm {
-    font-size: 14px;
+    font-size: calc(14rem / var(--global-font-size));
+    line-height: calc(21rem / var(--global-font-size));
 }
 
 /*------------------------------------*\

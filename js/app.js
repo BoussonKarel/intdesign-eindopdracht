@@ -5,9 +5,11 @@ const listenToExpand = function() {
     btnExpand.addEventListener("click", function() {
         if (htmlInfo.classList.contains("is-expanded")) {
             htmlInfo.classList.remove("is-expanded");
+            htmlInfoDetails.style.height = 0;
         }
         else {
             htmlInfo.classList.add("is-expanded");
+            htmlInfoDetails.style.height = htmlInfoDetails.dataset.height;
         }
     });
 }
@@ -74,11 +76,64 @@ const addLeadingZero = function(number) {
 const showLaunchInfo = function(data) {
     // console.log(data);
     showCountdown(data.window_start);
-    htmlName.innerHTML = data.name;
-    htmlOrganisation.innerHTML = data.launch_service_provider.name;
-    htmlRocket.innerHTML = data.rocket.configuration.name;
-    htmlMission.innerHTML = `<strong>${data.mission.name}:</strong> ${data.mission.description}`;
-    htmlPad.innerHTML = data.pad.name;
+
+    // Name
+    let name = "-";
+    if (data.name) {
+        name = data.name;
+    }
+    htmlName.innerHTML = name;
+
+    // Launch Service Provider / Organisation
+    let lsp = "-";
+    if (data.launch_service_provider) {
+        if (data.launch_service_provider.name) {
+            lsp = data.launch_service_provider.name;
+        }
+    }
+    htmlOrganisation.innerHTML = lsp;
+
+    // Rocket
+    let rocket = "-";
+    if (data.rocket) {
+        if (data.rocket.configuration) {
+            if (data.rocket.configuration.name) {
+                rocket = data.rocket.configuration.name;
+            }
+        }
+    }
+    htmlRocket.innerHTML = rocket;
+
+    // Mission
+    let missionInfo = "";
+    if (data.mission) {
+        if (data.mission.name) {
+            missionInfo += `<strong>${data.mission.name}:</strong>`;
+        }
+        if (data.mission.description) {
+            missionInfo += ` ${data.mission.description}`;
+        }
+    }
+    else {
+        missionInfo = "-";
+    }
+    htmlMission.innerHTML = missionInfo;
+
+    // Mission
+    let pad = "-";
+    if (data.pad) {
+        if (data.pad.name) {
+            pad = data.pad.name;
+        }
+    }
+    htmlPad.innerHTML = pad;
+
+    // Save height for Accordeon!
+    let realHeight = htmlInfoDetails.offsetHeight;
+    console.log(realHeight);
+
+    htmlInfoDetails.dataset.height = `${realHeight}px`;
+    htmlInfoDetails.style.height = 0;
 }
 
 const getLaunchInfo = async () => {
@@ -108,6 +163,7 @@ const getData = (endpoint) => {
 const init = function() {
     console.log("Document loaded");
     htmlInfo = document.querySelector(".js-info");
+    htmlInfoDetails = document.querySelector(".js-info-details");
     btnExpand = document.querySelector(".js-expand");
     htmlCountdown = document.querySelector(".js-countdown");
     htmlProgressBar = document.querySelector(".js-bar");
