@@ -1,6 +1,8 @@
 let htmlInfo, btnExpand, htmlInfoDetails;
 let htmlCountdown, htmlProgressBar, htmlDate, htmlName, htmlOrganisation, htmlMission, htmlRocket, htmlPad;
 
+let endpoint = `https://ll.thespacedevs.com/2.1.0/launch/upcoming`;
+
 const listenToExpand = function() {
     btnExpand.addEventListener("click", function() {
         if (htmlInfo.classList.contains("is-expanded")) {
@@ -136,9 +138,12 @@ const showLaunchInfo = function(data) {
     htmlInfoDetails.style.height = 0;
 }
 
-const getLaunchInfo = async () => {
-    const endpoint = `https://lldev.thespacedevs.com/2.1.0/launch/upcoming`;
+const switchToDev = function() {
+    endpoint = `https://lldev.thespacedevs.com/2.1.0/launch/upcoming`;
+    getLaunchInfo();
+}
 
+const getLaunchInfo = async () => {
     const launchData = await getData(endpoint);
 
     console.log(launchData.results);

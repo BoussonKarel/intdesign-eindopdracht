@@ -129,6 +129,7 @@ img {
 h1,
 h2,
 h3 {
+    font-style: var(--global-font-space);
     font-weight: 700;
 }
 
@@ -341,7 +342,6 @@ input::placeholder {
     margin-left: auto;
     margin-right: auto;
     max-width: 24.5em; /* 24.5 * 16px = 392 */
-    width: 100%;
 }
 
 /*
@@ -380,11 +380,13 @@ input::placeholder {
 }
 
 .c-countdown {
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 17em;
 }
 
 .c-countdown__timer {
-    font-family: var(--font-orbitron);
+    font-family: var(--global-font-space);
     font-size: calc(29rem / var(--global-font-size));
     line-height: calc(44.5rem / var(--global-font-size));
     font-weight: 500;
@@ -418,7 +420,6 @@ input::placeholder {
     background-color: var(--global-color-neutral-xx-light);
     color: var(--global-color-alpha-x-dark);
     padding: var(--global-whitespace-xs) var(--global-whitespace-sm);
-    padding-bottom: 0;
     border-radius: 8px;
 }
 
@@ -427,7 +428,6 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: var(--global-whitespace-xs);
 }
 
 .c-info__header h2,
@@ -452,7 +452,7 @@ input::placeholder {
 }
 
 .c-info__details h4 {
-    padding-top: var(--global-whitespace-xs);
+    padding-top: var(--global-whitespace-sm);
 }
 
 .c-info__details p {
@@ -467,7 +467,7 @@ input::placeholder {
 
 .c-landing {
     max-width: 1000px;
-    padding: 0 24px;
+    padding: 0 var(--global-whitespace-sm);
     margin: auto;
     margin-top: 80px;
     display: grid;
@@ -572,6 +572,11 @@ input::placeholder {
     Class to put on all input="text" like form inputs
 */
 
+.c-input,
+.c-button {
+    --input-padding: calc(var(--global-baseline) * 1.375) var(--global-whitespace-xs);
+}
+
 .c-input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -584,7 +589,7 @@ input::placeholder {
     font-size: calc(16rem / var(--global-font-size));
     line-height: calc(24rem / var(--global-font-size));
     color: var(--input-color, var(--global-color-neutral-xx-light));
-    padding: 11px 16px;
+    padding: var(--input-padding);
     outline: none;
 }
 
@@ -629,10 +634,10 @@ input::placeholder {
     position: absolute;
     top: 10px;
     left: 0;
-    padding: 4px 16px;
+    padding: calc(var(--global-baseline) * 0.5) var(--global-whitespace-xs);
     will-change: transform;
     transform: translateY( 0 );
-    transition: transform --var(--global-transition-alpha) ease-in-out;
+    transition: transform var(--global-transition-alpha) ease-in-out;
 }
 
 .c-form-field:focus-within .c-label,
@@ -660,7 +665,7 @@ input::placeholder {
     font-weight: 700;
     border-radius: 8px;
     background-color: var(--global-color-alpha-light);
-    padding: 11px 16px;
+    padding: var(--input-padding);
     color: #fff;
     width: 100%;
     outline: none;
