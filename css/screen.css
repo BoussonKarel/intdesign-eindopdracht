@@ -469,7 +469,7 @@ input::placeholder {
     max-width: 1000px;
     padding: 0 var(--global-whitespace-sm);
     margin: auto;
-    margin-top: 80px;
+    margin-top: calc(var(--global-whitespace-lg) * 2);
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     row-gap: 80px;
